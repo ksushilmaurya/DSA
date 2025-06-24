@@ -37,6 +37,26 @@ function solve(arr, freq) {
 
     }
 }
-let freq = Array(nums.length).fill(0);
-solve([], freq);
+
+function swap(i,j,arr) {
+    let temp = arr[i];
+    arr[i]=arr[j];
+    arr[j]=temp;
+}
+
+function solve2(i,nums) {
+    if(i==nums.length) {
+        result.push([...nums]);
+        return;
+    }
+    for(let j=i; j<nums.length; j++) {
+        swap(i,j,nums);
+        solve2(i+1,nums);
+        swap(i,j,nums)
+    }
+
+}
+//let freq = Array(nums.length).fill(0);
+//solve([], freq);
+solve2(0,nums)
 console.log(result);
