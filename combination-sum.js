@@ -26,3 +26,25 @@ Input: candidates = [2], target = 1
 Output: []
 
 */
+
+
+let candidates = [2, 3, 6, 7];
+let target = 7;
+let result = []
+
+function solve(i, arr, sum) {
+    if (i >= candidates.length || sum < 0) {
+        if (sum == 0) {
+            result.push([...arr]);
+        }
+        return;
+    }
+    arr.push(candidates[i]);
+    solve(i, arr, sum - candidates[i])
+
+    arr.pop();
+    solve(i + 1, arr, sum);
+}
+
+solve(0, [], target)
+console.log(result);
